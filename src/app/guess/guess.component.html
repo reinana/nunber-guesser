@@ -1,0 +1,11 @@
+<div class="container d-flex flex-column align-items-center">
+  <div *ngIf="isPlayer2()" class="container"><p>{{selectedMessage}}</p></div>
+  <div *ngIf="isPlayer2()" class="container result-box">
+      <img [src]="nowImg" alt="image" />
+
+  </div>
+
+  <div class="container">
+  <app-message></app-message>
+  </div>
+</div>

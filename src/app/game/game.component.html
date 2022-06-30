@@ -1,0 +1,43 @@
+<h2>{{ currentMessage }}</h2>
+
+<div class="container d-flex flex-column align-items-center">
+  <input
+    id="playerControl"
+    type="number"
+    [formControl]="playerControl"
+    [ngClass]="nowClass"
+    class="input-form"
+    min="1"
+    max="100"
+
+  /><br />
+  <div *ngIf="playerControl.errors?.['min']">1 より<span>おおきい</span>すうじをいれよう。</div>
+  <div *ngIf="playerControl.errors?.['max']">
+    100 より<span>ちいさい</span>すうじをいれよう。
+  </div>
+</div>
+<div class="container d-flex align-items-center" *ngIf="currentPlayer == 'player1'">
+  <h3>すうじをみえなくする</h3>
+  <label class="switch__label d-flex">
+    <input
+      type="checkbox"
+      #transparent
+      class="switch__input"
+      (change)="check(transparent.checked)"
+    />
+    <span class="switch__content"></span>
+    <span class="switch__circle"></span>
+  </label>
+</div>
+<div *ngIf="!isCorrect" class="container d-flex align-items-center">
+  <button type="button" (click)="onSubmit()" class="btn" [disabled]="playerControl.invalid">けってい</button>
+</div>
+<div *ngIf="isCorrect" class="container d-flex align-items-center">
+  <button type="button" (click)="restart()" class="btn" [disabled]="playerControl.invalid">さいしょから</button>
+</div>
+
+<app-guess 
+  [player1Num]="player1Num" 
+  [currentPlayer]="currentPlayer"
+  [currentNum]="currentNum"
+  ></app-guess>

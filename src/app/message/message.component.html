@@ -1,0 +1,5 @@
+<div *ngIf="messageService.messages.length">
+<table>
+  <tr *ngFor="let message of messageService.messages; let i=index;">{{i+1}} かいめ : {{message}}</tr>
+</table>
+</div>
